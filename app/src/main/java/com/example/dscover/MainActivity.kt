@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.activity_main.*
 
+
+// first
 class MainActivity : AppCompatActivity() {
     private val frag_diary by lazy { frag_diary() }
     private val frag_home by lazy { frag_home() }
