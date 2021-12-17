@@ -5,9 +5,7 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.example.dietrecord.menu.frag_diary
-import com.example.dietrecord.menu.frag_home
-import com.example.dietrecord.menu.frag_profile
+import com.example.dietrecord.menu.*
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 
