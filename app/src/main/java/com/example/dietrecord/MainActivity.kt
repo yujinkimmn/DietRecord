@@ -5,9 +5,10 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
-import com.google.common.primitives.UnsignedBytes.toInt
+import com.example.dietrecord.menu.frag_diary
+import com.example.dietrecord.menu.frag_home
+import com.example.dietrecord.menu.frag_profile
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -29,9 +30,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initNavigationBar()
-
-        // 파이어스토어 인스턴스 초기화
-        firestore = FirebaseFirestore.getInstance()
 
     }
 

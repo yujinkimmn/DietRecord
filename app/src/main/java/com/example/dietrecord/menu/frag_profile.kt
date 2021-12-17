@@ -1,10 +1,11 @@
-package com.example.dietrecord
+package com.example.dietrecord.menu
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.dietrecord.R
 
 class frag_profile: Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

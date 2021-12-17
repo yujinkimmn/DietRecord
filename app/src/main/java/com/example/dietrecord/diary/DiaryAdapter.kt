@@ -1,10 +1,11 @@
-package com.example.dietrecord
+package com.example.dietrecord.diary
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.dietrecord.R
 
 class DiaryAdapter(val diaryList: ArrayList<Diary>) : RecyclerView.Adapter<DiaryAdapter.CustomViewHolder>(){
 

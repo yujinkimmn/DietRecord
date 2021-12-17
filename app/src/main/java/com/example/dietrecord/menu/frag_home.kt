@@ -1,24 +1,27 @@
-package com.example.dietrecord
+package com.example.dietrecord.menu
 
-import android.app.ActionBar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
+import com.example.dietrecord.MainActivity
+import com.example.dietrecord.R
 import com.example.dietrecord.databinding.HomeBinding
-import kotlinx.android.synthetic.main.home.*
+import com.example.dietrecord.food.frag_search
 
 
 class frag_home : Fragment(), View.OnClickListener {
 
     private var mBinding: HomeBinding? = null
     private val binding get() = mBinding!!
+    private var waterLiter : Double?= 0.0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
+
         mBinding = HomeBinding.inflate(inflater, container, false)
+
 
 //        // 파이 차트 설정
 //        val piechart = frag_home_piechart
@@ -79,6 +82,9 @@ class frag_home : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        // 컵 하나 누를 때 마다 0.25리터씩 추가
+        waterLiter = waterLiter?.plus(0.25)
+        binding.tvFragHomeLiter.setText(waterLiter.toString() + "리터")
         when(v?.id){
             binding.ivCup1.id -> binding.ivCup1.setImageResource(R.drawable.btn_glass_of_water_full)
             binding.ivCup2.id -> binding.ivCup2.setImageResource(R.drawable.btn_glass_of_water_full)
