@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_timeline_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/design_search.xml" value="0.16510416666666666" />
         <entry key="app/src/main/res/layout/actionbar.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.11388888888888889" />
+        <entry key="app/src/main/res/layout/alert_dialog.xml" value="0.1" />
         <entry key="app/src/main/res/layout/card_calorie.xml" value="0.32515337423312884" />
         <entry key="app/src/main/res/layout/diary.xml" value="0.14895833333333333" />
         <entry key="app/src/main/res/layout/food.xml" value="0.25" />

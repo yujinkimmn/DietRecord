@@ -40,7 +40,7 @@ class frag_search : Fragment(){
         firestore = FirebaseFirestore.getInstance()
 
         binding.rvFragSearch.adapter = RecyclerViewAdapter()
-        //binding.rvFragSearch.layoutManager = LinearLayoutManager(this)
+        binding.rvFragSearch.layoutManager = LinearLayoutManager(context)
 
         // 검색
         binding.btnFragSearch.setOnClickListener {
@@ -82,7 +82,7 @@ class frag_search : Fragment(){
         // onCreateViewHolder에서 만든 view와 실제 데이터를 연결
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             var viewHolder = (holder as ViewHolder).itemView
-            viewHolder.tv_food_name.text = foodList[position].name
+            viewHolder.tv_food_name.text = foodList[position].foodName
             viewHolder.tv_food_gram.text = foodList[position].gram
             viewHolder.tv_frag_food_calorie.text = foodList[position].calorie
         }
