@@ -82,7 +82,7 @@ class frag_search : Fragment(){
         var foodList: ArrayList<Food> = arrayListOf()
 
         init{ // 데이터 불러온 뒤 Food로 변환 후 ArrayList에 담기
-            firestore?.collection("nutrients")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            firestore?.collection("nutrients_ver3")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 foodList.clear()
 
                 for (snapshot in querySnapshot!!.documents){
@@ -95,13 +95,19 @@ class frag_search : Fragment(){
         // xml 파일 inflate해서 viewholder 생성
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             var view = LayoutInflater.from(parent.context).inflate(R.layout.food, parent, false)
-            return ViewHolder(view)
+            return ViewHolder(view).apply {
+                itemView.setOnClickListener {
+                    val curPos: Int = adapterPosition
+                    val foodData: Food = foodList.get(curPos)
+                    Toast.makeText(parent.context, "클릭된 음식: ${foodData.foodName}", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
 
         inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
         }
 
-        // onCreateViewHolder에서 만든 view와 실제 데이터를 연결
+        // view를 실제 데이터에 연결
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             var viewHolder = (holder as ViewHolder).itemView
             viewHolder.tv_food_name.text = foodList[position].foodName
