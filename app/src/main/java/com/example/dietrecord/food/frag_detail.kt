@@ -39,8 +39,6 @@ class frag_detail : Fragment() {
             val mActivity = activity as MainActivity
             mActivity.setFragment(TAG_SEARCH_FRAGMENT, frag_search())
             fragmentManager?.beginTransaction()?.remove(this)?.commit()
-
-//            mActivity.changeDetailToSearch(frag_search())
         }
 
         // 클릭한 음식 home 프래그에 추가하기

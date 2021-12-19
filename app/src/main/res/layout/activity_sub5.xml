@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gold"
+    tools:context=".Sub5Activity">
+
+    <TextView
+        android:id="@+id/tv_wel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <TextView
+        android:id="@+id/tv_ques"
+        android:layout_width="350dp"
+        android:layout_height="35dp"
+        android:text="당신의 활동 수준은 어느 정도인가요?"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_wel"
+        app:layout_constraintVertical_bias="0.108" />
+
+    <ImageButton
+        android:id="@+id/btn_next"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginBottom="80dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ques"
+        app:layout_constraintVertical_bias="0.675"
+        app:srcCompat="@drawable/arrow" />
+
+    <RadioGroup
+        android:id="@+id/rg_act"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_marginBottom="320dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.34">
+
+        <RadioButton
+            android:id="@+id/btn_low"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:text="낮은 활동적"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="앉아서 주로 생활하거나 매일 가벼운 움직임만 하여 활동량이 적은 경우 "
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/btn_md"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:text="활동적"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="규칙적인 생활로 보통의 활동량을 가진 경우 "
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
+
+        <RadioButton
+            android:id="@+id/btn_high"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:text="매우 활동적"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="230dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="육체노동 등 평소 신체 활동량이 많은 경우 "
+            android:textColor="#FFFFFF"
+            android:textSize="13sp" />
+    </RadioGroup>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

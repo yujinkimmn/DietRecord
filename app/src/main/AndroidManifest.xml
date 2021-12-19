@@ -13,11 +13,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Dscover">
         <activity android:name="com.example.dietrecord.MainActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+        <activity android:name=".splash.Sub0Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".splash.Sub1Activity"/>
+        <activity android:name=".splash.Sub2Activity"/>
+        <activity android:name=".splash.Sub3Activity"/>
+        <activity android:name=".splash.Sub4Activity"/>
+        <activity android:name=".splash.Sub5Activity"/>
+        <activity android:name=".splash.Sub6Activity"/>
+        <activity android:name=".splash.Sub7Activity"/>
+        <activity android:name=".splash.Sub8Activity"/>
+        <activity android:name=".splash.Sub9Activity"/>
+
     </application>
 
 </manifest>
