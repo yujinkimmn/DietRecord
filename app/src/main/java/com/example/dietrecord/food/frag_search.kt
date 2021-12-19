@@ -81,17 +81,17 @@ class frag_search : Fragment(){
         init{ // 데이터 불러온 뒤 Food로 변환 후 ArrayList에 담기
             // firebase 연결된 프로젝트 아이디 출력
             Toast.makeText(context,  FirebaseApp.getInstance().options.projectId, Toast.LENGTH_SHORT).show()
-            firestore?.collection("nutrients_ver5")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
-                foodList.clear()
-                if (firebaseFirestoreException!= null){
-                    Toast.makeText(context, "에러"+ firebaseFirestoreException, Toast.LENGTH_SHORT).show()
-                    return@addSnapshotListener // exit after handling error
-                }
-                for (snapshot in querySnapshot!!.documents){
-                    var foodItem = snapshot.toObject(Food::class.java)
-                }
-                notifyDataSetChanged()
-            }
+//            firestore?.collection("nutrients_ver5")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+//                foodList.clear()
+//                if (firebaseFirestoreException!= null){
+//                    Toast.makeText(context, "에러"+ firebaseFirestoreException, Toast.LENGTH_SHORT).show()
+//                    return@addSnapshotListener // exit after handling error
+//                }
+//                for (snapshot in querySnapshot!!.documents){
+//                    var foodItem = snapshot.toObject(Food::class.java)
+//                }
+//                notifyDataSetChanged()
+//            }
         }
 
         // xml 파일 inflate해서 viewholder 생성
