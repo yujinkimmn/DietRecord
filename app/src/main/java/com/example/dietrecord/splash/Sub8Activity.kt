@@ -5,9 +5,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.example.dietrecord.R
+import com.example.dietrecord.MainActivity
+import com.example.dietrecord.*
+import com.example.dietrecord.TAG_MYPAGE_FRAGMENT
 import com.example.dietrecord.databinding.ActivitySub2Binding
 import com.example.dietrecord.databinding.ActivitySub8Binding
+import com.example.dietrecord.menu.frag_profile
 import kotlinx.android.synthetic.main.activity_sub8.*
 import kotlinx.android.synthetic.main.activity_sub8.btn_next
 import java.util.*
@@ -41,7 +44,7 @@ class Sub8Activity : AppCompatActivity() {
                 val year = dp_birth.year
                 val cal = Calendar.getInstance()
                 val currYear = cal.get(Calendar.YEAR)
-                var intent = Intent(this, Sub9Activity::class.java)
+                var intent = Intent(this, MainActivity::class.java)
 
                 intent.putExtra("name", username)
                 intent.putExtra("goal", goal)
@@ -52,9 +55,16 @@ class Sub8Activity : AppCompatActivity() {
                 intent.putExtra("birth", "${year}년 ${month}월 ${day}일")
                 intent.putExtra("age", (currYear.toInt() - year.toInt() + 1).toString())
 
-                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                // Profile 클래스로 선언
+                var profileData = Profile(username, goal, sex, act, wgt, hgt,
+                    "${year}년 ${month}월 ${day}일",
+                    (currYear.toInt() - year.toInt() + 1).toString())
+
+                // MainActivity로 값 넘기고 실행
                 startActivity(intent)
-                Toast.makeText(this@Sub8Activity, "정보 등록이 완료되었습니다", Toast.LENGTH_SHORT).show()
+//                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                startActivity(intent)
+//                Toast.makeText(this@Sub8Activity, "정보 등록이 완료되었습니다", Toast.LENGTH_SHORT).show()
             }
         }
     }

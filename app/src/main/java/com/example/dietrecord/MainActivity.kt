@@ -8,7 +8,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.dietrecord.food.Food
 import com.example.dietrecord.food.frag_detail
+import com.example.dietrecord.food.frag_search
 import com.example.dietrecord.menu.*
+import com.example.dietrecord.splash.Profile
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.search.*
@@ -24,14 +26,33 @@ const val TAG_DETAIL_FRAGMENT = "frag_detail"
 class MainActivity : AppCompatActivity() {
     private val frag_diary by lazy { frag_diary() }
     private val frag_home by lazy { frag_home() }
+//    latinent private val  frag_profile
     private val frag_profile by lazy { frag_profile() }
     //private val frag_search by lazy { frag_search() }
     var firestore : FirebaseFirestore? = null
+    private var profileData: Profile?= null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // profileData 받아온 것을 frag_profile로 전달
+        if (intent.hasExtra("name")) {
+            Toast.makeText(this, "${intent.getStringExtra("name")}님 환영합니다!", Toast.LENGTH_SHORT).show()
+            var username = intent.getStringExtra("name")
+            var goal = intent.getStringExtra("goal")
+            var sex = intent.getStringExtra("sex")
+            var act = intent.getStringExtra("activity")
+            var wgt = intent.getStringExtra("weight")
+            var hgt = intent.getStringExtra("height")
+            var birth = intent.getStringExtra("birth")
+            var age = intent.getStringExtra("age")
+
+            profileData = Profile(username, goal, sex, act, wgt, hgt, birth, age)
+//            setProfileData(frag_profile(), profileData!!) // 데이터 전달
+        }
         initNavigationBar()
     }
 
@@ -46,8 +67,8 @@ class MainActivity : AppCompatActivity() {
                         //changeFragment(frag_home)
                         setFragment(TAG_HOME_FRAGMENT, frag_home) }
                     R.id.ic_profile -> {
-                        //changeFragment(frag_profile)
-                        setFragment(TAG_MYPAGE_FRAGMENT, frag_profile)
+                        setProfileData(profileData!!) // 데이터 전달 & 프래그먼트 전환
+//                        setFragment(TAG_MYPAGE_FRAGMENT, frag_profile)
                     }
                 }
                 true
@@ -95,13 +116,13 @@ class MainActivity : AppCompatActivity() {
             ft.hide(diary)
         }
         if (search == null){
-            Toast.makeText(this, "search == null", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "search == null", Toast.LENGTH_SHORT).show()
         }
         if (search != null){
             ft.hide(search)
         }
         if (tag != TAG_DETAIL_FRAGMENT){
-            Toast.makeText(this, "tag != TAG_DETAIL_FRAGMENT", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this, "tag != TAG_DETAIL_FRAGMENT", Toast.LENGTH_SHORT).show()
                 if (detail != null){
                 ft.hide(detail)
             }
@@ -115,7 +136,9 @@ class MainActivity : AppCompatActivity() {
         }
         if (tag == TAG_MYPAGE_FRAGMENT){
             if(mypage!=null){
+//                setProfileData(frag_profile(), profileData!!) // 데이터 전달
                 ft.show(mypage)
+//                frag_profile()
             }
         }
         if (tag == TAG_DIARY_FRAGMENT){
@@ -151,10 +174,19 @@ class MainActivity : AppCompatActivity() {
 //            .commit()
     }
 
-    fun changeDetailToSearch(fragment: Fragment){
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.detail_frag, fragment)
-            .commit()
+//    fun changeDetailToSearch(fragment: Fragment){
+//        supportFragmentManager
+//            .beginTransaction()
+//            .replace(R.id.detail_frag, fragment)
+//            .commit()
+//    }
+
+    /* Sub8Activity -> frag_profile로 데이터 전송 */
+    private fun setProfileData(profile: Profile){
+        val profileBundle = Bundle()
+        profileBundle.putSerializable("profileData", profile)
+        frag_profile.arguments = profileBundle
+//        Toast.makeText(this, "setProfileData 함수 \n데이터 전송 완료! ${profile.userName}님", Toast.LENGTH_SHORT).show()
+        setFragment(TAG_MYPAGE_FRAGMENT, frag_profile)
     }
 }
