@@ -97,13 +97,14 @@ class frag_search : Fragment(){
         // xml 파일 inflate해서 viewholder 생성
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
             var view = LayoutInflater.from(parent.context).inflate(R.layout.food, parent, false)
+
             return ViewHolder(view).apply {
                 itemView.setOnClickListener {
                     val curPos: Int = adapterPosition
                     val foodData: Food = foodList.get(curPos)
                     Toast.makeText(parent.context, "클릭된 음식: ${foodData.foodName}", Toast.LENGTH_SHORT).show()
                     val mActivity = activity as MainActivity
-                    mActivity.setFragment(TAG_DETAIL_FRAGMENT, frag_detail())
+                    mActivity.setDataAtDetailFrag(frag_detail(), foodData)
                 }
             }
         }
