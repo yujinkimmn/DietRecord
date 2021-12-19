@@ -72,6 +72,11 @@ class MainActivity : AppCompatActivity() {
         if (manager.findFragmentByTag(tag) == null){
             ft.add(R.id.main_frag, fragment, tag)
         }
+//
+//        // frag_detail 새로 띄우기
+//        if(tag == TAG_DETAIL_FRAGMENT){
+//            ft.add(R.id.search_frag, )
+//        }
 
         val home = manager.findFragmentByTag(TAG_HOME_FRAGMENT)
         val mypage = manager.findFragmentByTag(TAG_MYPAGE_FRAGMENT)
@@ -95,8 +100,11 @@ class MainActivity : AppCompatActivity() {
         if (search != null){
             ft.hide(search)
         }
-        if (detail != null){
-            ft.hide(detail)
+        if (tag != TAG_DETAIL_FRAGMENT){
+            Toast.makeText(this, "tag != TAG_DETAIL_FRAGMENT", Toast.LENGTH_SHORT).show()
+                if (detail != null){
+                ft.hide(detail)
+            }
         }
 
         // 현재 fragment 띄우기
@@ -121,9 +129,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         if (tag == TAG_DETAIL_FRAGMENT){
-            if(detail!=null){
-                ft.show(detail)
-            }
+            frag_detail()
+//            if(detail!=null){
+//                frag_detail()
+////                ft.show(detail)
+//            }
         }
         ft.commitAllowingStateLoss()
     }

@@ -38,6 +38,8 @@ class frag_detail : Fragment() {
         binding.btnFragDetailBack.setOnClickListener {
             val mActivity = activity as MainActivity
             mActivity.setFragment(TAG_SEARCH_FRAGMENT, frag_search())
+            fragmentManager?.beginTransaction()?.remove(this)?.commit()
+
 //            mActivity.changeDetailToSearch(frag_search())
         }
 
