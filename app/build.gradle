@@ -4,6 +4,7 @@ plugins {
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
+//    id 'com.google.gms.google-services'
 }
 
 android {
@@ -37,9 +38,6 @@ android {
     buildFeatures{
         viewBinding true
     }
-    dataBinding{
-        enabled = true
-    }
 }
 
 dependencies {
@@ -63,7 +61,9 @@ dependencies {
     implementation 'com.nineoldandroids:library:2.4.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    // firebase
-    implementation platform('com.google.firebase:firebase-bom:29.0.2')
+//    // firebase
+//    implementation platform('com.google.firebase:firebase-bom:29.0.2')
+//    implementation 'com.google.firebase:firebase-firestore-ktx:24.0.0'
+
 
 }

@@ -14,6 +14,7 @@ const val TAG_HOME_FRAGMENT = "frag_home"
 const val TAG_MYPAGE_FRAGMENT = "frag_profile"
 const val TAG_DIARY_FRAGMENT = "frag_diary"
 const val TAG_SEARCH_FRAGMENT = "frag_search"
+const val TAG_DETAIL_FRAGMENT = "frag_detail"
 
 
 class MainActivity : AppCompatActivity() {
@@ -72,7 +73,8 @@ class MainActivity : AppCompatActivity() {
         val mypage = manager.findFragmentByTag(TAG_MYPAGE_FRAGMENT)
         val diary = manager.findFragmentByTag(TAG_DIARY_FRAGMENT)
         val search = manager.findFragmentByTag(TAG_SEARCH_FRAGMENT)
-
+        val detail = manager.findFragmentByTag(TAG_DETAIL_FRAGMENT
+        )
         // 모든 fragment 숨기기
         if (home != null){
             ft.hide(home)
@@ -85,6 +87,9 @@ class MainActivity : AppCompatActivity() {
         }
         if (search != null){
             ft.hide(search)
+        }
+        if (detail != null){
+            ft.hide(detail)
         }
 
         // 현재 fragment 띄우기
@@ -106,6 +111,11 @@ class MainActivity : AppCompatActivity() {
         if (tag == TAG_SEARCH_FRAGMENT){
             if(search!=null){
                 ft.show(search)
+            }
+        }
+        if (tag == TAG_DETAIL_FRAGMENT){
+            if(detail!=null){
+                ft.show(detail)
             }
         }
 

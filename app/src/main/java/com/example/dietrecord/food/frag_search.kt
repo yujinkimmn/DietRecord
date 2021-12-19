@@ -6,17 +6,14 @@ import android.view.KeyEvent.KEYCODE_ENTER
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dietrecord.MainActivity
-import com.example.dietrecord.R
-import com.example.dietrecord.TAG_HOME_FRAGMENT
+import com.example.dietrecord.*
 import com.example.dietrecord.databinding.SearchBinding
 import com.example.dietrecord.menu.frag_home
-import com.google.common.primitives.UnsignedBytes.toInt
+import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.food.view.*
 
@@ -30,10 +27,10 @@ class frag_search : Fragment(){
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mbinding = SearchBinding.inflate(inflater, container, false)
-        arguments?.let{
-            meal = it.getString("mealtitle")
-        }
-        binding.tvFragSearchMealTitle.setText(meal)
+//        arguments?.let{
+//            meal = it.getString("mealtitle")
+//        }
+//        binding.tvFragSearchMealTitle.setText(meal)
 
         // 닫기 버튼
         binding.btnFragSearchClose.setOnClickListener {
@@ -82,9 +79,14 @@ class frag_search : Fragment(){
         var foodList: ArrayList<Food> = arrayListOf()
 
         init{ // 데이터 불러온 뒤 Food로 변환 후 ArrayList에 담기
-            firestore?.collection("nutrients_ver3")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            // firebase 연결된 프로젝트 아이디 출력
+            Toast.makeText(context,  FirebaseApp.getInstance().options.projectId, Toast.LENGTH_SHORT).show()
+            firestore?.collection("nutrients_ver5")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 foodList.clear()
-
+                if (firebaseFirestoreException!= null){
+                    Toast.makeText(context, "에러"+ firebaseFirestoreException, Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener // exit after handling error
+                }
                 for (snapshot in querySnapshot!!.documents){
                     var foodItem = snapshot.toObject(Food::class.java)
                 }
@@ -100,6 +102,8 @@ class frag_search : Fragment(){
                     val curPos: Int = adapterPosition
                     val foodData: Food = foodList.get(curPos)
                     Toast.makeText(parent.context, "클릭된 음식: ${foodData.foodName}", Toast.LENGTH_SHORT).show()
+                    val mActivity = activity as MainActivity
+                    mActivity.setFragment(TAG_DETAIL_FRAGMENT, frag_detail())
                 }
             }
         }
@@ -121,10 +125,13 @@ class frag_search : Fragment(){
 
         // 파이어스토어에서 음식 검색하기 함수
         fun searchFood(searchWord: String){
-            firestore?.collection("nutrients_ver3")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            firestore?.collection("nutrients_ver5")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 // ArrayList 비우기
                 foodList.clear()
-
+                if (firebaseFirestoreException!= null){
+                    Toast.makeText(context, "에러"+ firebaseFirestoreException, Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener // exit after handling error
+                }
                 for (snapshot in querySnapshot!!.documents){
                     if(snapshot.getString("foodName")!!.contains(searchWord)){
                         var item = snapshot.toObject(Food::class.java)

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.dietrecord.MainActivity
 import com.example.dietrecord.R
+import com.example.dietrecord.TAG_SEARCH_FRAGMENT
 import com.example.dietrecord.databinding.HomeBinding
 import com.example.dietrecord.food.frag_search
 
@@ -42,22 +43,23 @@ class frag_home : Fragment(), View.OnClickListener {
         /* 음식 추가 버튼 눌렀을 때 프래그먼트 전환 */
         binding.btnFragHomeBreakfast.setOnClickListener {
             val mActivity = activity as MainActivity
-            mActivity.setDataAtFragment(frag_search(), "아침 식사")
+            mActivity.setFragment(TAG_SEARCH_FRAGMENT, frag_search())
+            //mActivity.setDataAtFragment(frag_search(), "아침 식사")
         }
 
         binding.btnFragHomeLunch.setOnClickListener {
             val mActivity = activity as MainActivity
-            mActivity.setDataAtFragment(frag_search(), "점심 식사")
+            mActivity.setFragment(TAG_SEARCH_FRAGMENT, frag_search())
         }
 
         binding.btnFragHomeDinner.setOnClickListener {
             val mActivity = activity as MainActivity
-            mActivity.setDataAtFragment(frag_search(), "저녁 식사")
+            mActivity.setFragment(TAG_SEARCH_FRAGMENT, frag_search())
         }
 
         binding.btnFragHomeSnack.setOnClickListener {
             val mActivity = activity as MainActivity
-            mActivity.setDataAtFragment(frag_search(), "간식")
+            mActivity.setFragment(TAG_SEARCH_FRAGMENT, frag_search())
         }
 
         /* 물 컵 눌렀을 때 */
