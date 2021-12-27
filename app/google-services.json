@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "642823243588",
+    "project_id": "dietrecord5",
+    "storage_bucket": "dietrecord5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:642823243588:android:66b554d31f4cc481583911",
+        "android_client_info": {
+          "package_name": "com.example.dietrecord"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "642823243588-83se1m1vlfcb4io45jnv86t7gs16122r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dietrecord",
+            "certificate_hash": "559bb981c8ff334905552438a8b44dcec8e4823c"
+          }
+        },
+        {
+          "client_id": "642823243588-btehcqbn8kcph64ivmhgse21d4uo6leu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnBmcr49gZm4Xgm9bXfvY-5l63Vlkvu-o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "642823243588-btehcqbn8kcph64ivmhgse21d4uo6leu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

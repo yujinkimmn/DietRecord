@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="diary_graph_spinner_menu">
+        <item>이번주</item>
+        <item>이번달</item>
+    </string-array>
+</resources>
